@@ -9,6 +9,10 @@ start = date(2020, 7, 30)
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
+    bot.send_message(message.chat.id, 'Привет! Это бот, который показывает минимальную и максимальную температуру воздуха за сегодняшний день. Теперь тебе не нужно заходить на погодные сайты - просто напиши /pogoda, и бот всё тебе раскажет. Возможно, в будущем он сможет давать больше информации (если это кому-нибудь будет нужно).')
+
+@bot.message_handler(commands=['pogoda'])
+def pogoda_message(message):
     bot.send_message(message.chat.id, 'Если я не выйду на связь через 5 минут - звоните в полицию.')
     global start, date
     date = date.today()
