@@ -9,7 +9,11 @@ start = date(2020, 7, 30)
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
-    bot.send_message(message.chat.id, 'Пожалуйста, подождите, пока я смотрю на термометр. Если я не выйду на связь через 5 минут - звоните в полицию.')
+    bot.send_message(message.chat.id, 'Привет! Это бот, который показывает минимальную и максимальную температуру воздуха за сегодняшний день. Теперь тебе не нужно заходить на погодные сайты - просто напиши /pogoda, и бот всё тебе раскажет. Возможно, в будущем он сможет давать больше информации (если это кому-нибудь будет нужно).')
+
+@bot.message_handler(commands=['pogoda'])
+def pogoda_message(message):
+    bot.send_message(message.chat.id, 'Если я не выйду на связь через 5 минут - звоните в полицию.')
     global start, date
     date = date.today()
     delta = (date - start).days
@@ -20,7 +24,7 @@ def start_message(message):
 
 
     request = requests.get('https://www.gismeteo.ua/ua/weather-enerhodar-' + str(n), headers = headers)
-    time.sleep(4)
+    time.sleep(10)
     html = BS(request.content, 'html.parser')
 
 
@@ -30,7 +34,7 @@ def start_message(message):
         spisok.append(temp)
     t1 = spisok[0].text
     t2 = spisok[1].text
-    bot.send_message(message.chat.id, "Минимальная температура за день: " + t1 + "°C /nМаксимальная температура за день: " + t2 + '°C.')
+    bot.send_message(message.chat.id, "Min: " + t1 + "°C Max: " + t2 + '°C.')
 
 try:
     bot.polling(none_stop=True, interval=0)
