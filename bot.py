@@ -34,7 +34,7 @@ def pogoda_message(message):
         spisok.append(temp)
     t1 = spisok[0].text
     t2 = spisok[1].text
-    bot.send_message(message.chat.id, "Минимальная температура за день: " + t1 + "°C \nМаксимальная температура за день: " + t2 + '°C.')
+    bot.send_message(message.chat.id, "Минимальная температура за день: " + t1 + "°C.\nМаксимальная температура за день: " + t2 + '°C.')
 
 try:
     bot.polling(none_stop=True, interval=0)
