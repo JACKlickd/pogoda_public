@@ -13,7 +13,7 @@ def start_message(message):
 
 @bot.message_handler(commands=['pogoda'])
 def pogoda_message(message):
-    bot.send_message(message.chat.id, 'Если я не выйду на связь через 5 минут - звоните в полицию.')
+    bot.send_message(message.chat.id, 'Пожалуйста, подождите, пока я смотрю на термометр. Если я не выйду на связь через 5 минут - звоните в полицию.')
     global start, date
     date = date.today()
     delta = (date - start).days
@@ -34,7 +34,7 @@ def pogoda_message(message):
         spisok.append(temp)
     t1 = spisok[0].text
     t2 = spisok[1].text
-    bot.send_message(message.chat.id, "Min: " + t1 + "°C Max: " + t2 + '°C.')
+    bot.send_message(message.chat.id, "Минимальная температура за день: " + t1 + "°C /nМаксимальная температура за день: " + t2 + '°C.')
 
 try:
     bot.polling(none_stop=True, interval=0)
