@@ -23,7 +23,7 @@ def pogoda_message(message):
     headers = { 'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36.' }
 
 
-    request = requests.get('https://www.gismeteo.ua/ua/weather-enerhodar-' + str(n), headers = headers)
+    request = requests.get('https://www.gismeteo.ua/ua/weather-enerhodar-11856/', headers = headers)
     time.sleep(10)
     html = BS(request.content, 'html.parser')
 
