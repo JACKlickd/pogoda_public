@@ -5,7 +5,6 @@ from datetime import datetime, date
 import time
 
 bot = telebot.TeleBot('BOT-TOKEN.')
-start = date(2020, 7, 30)
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
@@ -14,11 +13,7 @@ def start_message(message):
 @bot.message_handler(commands=['pogoda'])
 def pogoda_message(message):
     bot.send_message(message.chat.id, 'Пожалуйста, подождите, пока я смотрю на термометр. Если я не выйду на связь через 5 минут - звоните в полицию.')
-    global start, date
-    date = date.today()
-    delta = (date - start).days
-    n = 11856 + delta
-
+    
 
     headers = { 'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36.' }
 
